@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/${NAME}List">
+
+    <fragment
+        android:id="@+id/${NAME}List"
+        android:name="${NAME}ListFragment"
+        android:label="${NAME} List"
+        tools:layout="@layout/fragment_${NAME}_list">
+
+        <action
+            android:id="@+id/${NAME}List_to_addEdit${NAME}"
+            app:destination="@+id/addEdit${NAME}" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEdit${NAME}"
+        android:name="AddEdit${NAME}Fragment"
+        android:label="Add/Edit ${NAME}"
+        tools:layout="@layout/fragment_add_or_update_${NAME}">
+
+        <argument
+            android:name="${NAME}Id"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/addEdit${NAME}_to_${NAME}List"
+            app:destination="@+id/${NAME}List" />
+    </fragment>
+
+</navigation>

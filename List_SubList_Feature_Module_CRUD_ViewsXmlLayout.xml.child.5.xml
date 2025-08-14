@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/${NAME}List">
+
+    <fragment
+        android:id="@+id/${NAME}List"
+        android:name="${NAME}ListFragment"
+        android:label="${NAME} List"
+        tools:layout="@layout/fragment_${NAME}_list">
+
+        <action
+            android:id="@+id/${NAME}List_to_addEdit${NAME}"
+            app:destination="@+id/addEdit${NAME}" />
+
+        <action
+            android:id="@+id/${NAME}List_to_sub${NAME}List"
+            app:destination="@+id/sub${NAME}List" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEdit${NAME}"
+        android:name="AddEdit${NAME}Fragment"
+        android:label="Add/Edit ${NAME}"
+        tools:layout="@layout/fragment_add_or_update_${NAME}">
+
+        <argument
+            android:name="${NAME}Id"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/addEdit${NAME}_to_${NAME}List"
+            app:destination="@+id/${NAME}List" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/sub${NAME}List"
+        android:name="Sub${NAME}ListFragment"
+        android:label="Sub ${NAME} List"
+        tools:layout="@layout/fragment_sub_${NAME}_list">
+
+        <argument
+            android:name="${NAME}Id"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/sub${NAME}List_to_addEditSub${NAME}"
+            app:destination="@+id/addEditSub${NAME}" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEditSub${NAME}"
+        android:name="AddEditSub${NAME}Fragment"
+        android:label="Add/Edit Sub${NAME}y"
+        tools:layout="@layout/fragment_add_or_update_sub_${NAME}">
+
+        <argument
+            android:name="${NAME}Id"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="sub${NAME}Id"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/addEditSub${NAME}_to_sub${NAME}List"
+            app:destination="@+id/sub${NAME}List" />
+    </fragment>
+
+</navigation>
